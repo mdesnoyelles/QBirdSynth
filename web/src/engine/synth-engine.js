@@ -17,24 +17,19 @@ export class SynthEngine {
     this.analyser = this.ctx.createAnalyser();
     this.analyser.fftSize = 2048;
     this._data = new Uint8Array(this.analyser.frequencyBinCount);
-    // Compressor
     this.comp = this.ctx.createDynamicsCompressor();
     this.comp.threshold.value = -12;
-    // Reverb
     this.revGain = this.ctx.createGain(); this.revGain.gain.value = this.params.reverb_mix;
     this.dryGain = this.ctx.createGain(); this.dryGain.gain.value = 1;
     this.convolver = this.ctx.createConvolver();
     await this._makeIR(this.params.reverb_size);
-    // Delay
     this.dlGain = this.ctx.createGain(); this.dlGain.gain.value = this.params.delay_mix;
     this.dlNode = this.ctx.createDelay(2); this.dlNode.delayTime.value = this.params.delay_time;
     this.dlFB = this.ctx.createGain(); this.dlFB.gain.value = this.params.delay_feedback;
-    // LFO
     this.lfo = this.ctx.createOscillator(); this.lfoG = this.ctx.createGain();
     this.lfo.type='sine'; this.lfo.frequency.value=this.params.lfo_rate;
     this.lfoG.gain.value=this.params.lfo_depth;
     this.lfo.connect(this.lfoG); this.lfo.start();
-    // Routing: master->comp->bus; send->reverb+delay
     this.bus = this.ctx.createGain();
     this.comp.connect(this.bus); this.dryGain.connect(this.bus);
     this.send = this.ctx.createGain();
@@ -93,7 +88,7 @@ export class SynthEngine {
     v.env.gain.cancelScheduledValues(now);
     v.env.gain.setValueAtTime(v.env.gain.value,now);
     v.env.gain.linearRampToValueAtTime(0,now+r);
-    setTimeout(()=>{v.osc.forEach(({o,g})=>{try{o.stop();o.disconnect();g.disconnect()}catch(e){}});v.filter.disconnect();v.env.disconnect()},r*1e3+100);
+    setTimeout(function(){v.osc.forEach(function(x){try{x.o.stop();x.o.disconnect();x.g.disconnect()}catch(e){}});v.filter.disconnect();v.env.disconnect()},r*1e3+100);
     this.voices.delete(note);if(this.onNoteOff)this.onNoteOff(note);
   }
 
@@ -120,23 +115,27 @@ export class SynthEngine {
   startRecording(){
     if(!this.isInitialized||this.isRecording)return;
     const d=this.ctx.createMediaStreamDestination();this.analyser.connect(d);
+    var self=this;
     this._rec=new MediaRecorder(d.stream,{mimeType:'audio/webm;codecs=opus',audioBitsPerSecond:128000});
     this._chunks=[];this.isRecording=true;
-    this._rec.ondataavailable=e=>{if(e.data.size>0)this._chunks.push(e.data)};
-    this._rec.onstop=()=>{const b=new Blob(this._chunks,{type:'audio/webm'});const u=URL.createObjectURL(b);
-      const a=document.createElement('a');a.href=u;a.download=`qbirdsynth-${Date.now()}.webm`;a.click();URL.revokeObjectURL(u);this.isRecording=false};
+    this._rec.ondataavailable=function(e){if(e.data.size>0)self._chunks.push(e.data)};
+    this._rec.onstop=function(){
+      const b=new Blob(self._chunks,{type:'audio/webm'});const u=URL.createObjectURL(b);
+      const a=document.createElement('a');a.href=u;a.download='qbirdsynth-'+Date.now()+'.webm';a.click();URL.revokeObjectURL(u);self.isRecording=false;
+    };
     this._rec.start();
   }
   stopRecording(){if(this._rec&&this.isRecording)this._rec.stop()}
 
-  _loop(){const u=()=>{if(!this.isInitialized)return;this.analyser.getByteTimeDomainData(this._data);if(this.onData)this.onData(this._data);requestAnimationFrame(u)};u()}
+  _loop(){const self=this;const u=function(){if(!self.isInitialized)return;self.analyser.getByteTimeDomainData(self._data);if(self.onData)self.onData(self._data);requestAnimationFrame(u)};u()}
 
   async connectMIDI(){
     if(!navigator.requestMIDIAccess)return false;
     try{const m=await navigator.requestMIDIAccess();
-      for(const i of m.inputs.values())i.onmidimessage=msg=>{
-        const[st,n,v]=msg.data;const c=st&0xf0;
-        if(c===0x90&&v>0)this.noteOn(n,v/127);else if(c===0x80||(c===0x90&&v===0))this.noteOff(n)};
+      const self=this;
+      for(const i of m.inputs.values())i.onmidimessage=function(msg){
+        const st=msg.data[0];const n=msg.data[1];const v=msg.data[2];const c=st&0xf0;
+        if(c===0x90&&v>0)self.noteOn(n,v/127);else if(c===0x80||(c===0x90&&v===0))self.noteOff(n)};
       return true}catch(e){return false}
   }
 

@@ -21,17 +21,14 @@ html,body{height:100%;overflow:hidden;background:var(--black);color:var(--fg);
   font-family:var(--font-u);font-size:14px;user-select:none;touch-action:none}
 #app{display:flex;flex-direction:column;height:100vh;max-height:100vh;overflow:hidden}
 
-/* Header */
 .hdr{display:flex;align-items:center;justify-content:space-between;
   padding:8px 16px;background:linear-gradient(180deg,var(--surface),var(--bg));
   border-bottom:1px solid var(--border);min-height:40px}
 .logo{font-family:var(--font-d);font-size:18px;letter-spacing:3px;
   background:linear-gradient(90deg,var(--purple-glow),var(--orange-glow));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  text-transform:uppercase}
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-transform:uppercase}
 .hdr-sec{display:flex;gap:6px;align-items:center}
 
-/* Buttons */
 .btn{font-family:var(--font-u);font-size:12px;font-weight:600;padding:6px 14px;
   border:1px solid var(--border);border-radius:var(--r);background:var(--surface);
   color:var(--muted);cursor:pointer;transition:all .15s;text-transform:uppercase;letter-spacing:1px}
@@ -45,7 +42,6 @@ html,body{height:100%;overflow:hidden;background:var(--black);color:var(--fg);
 .btn-rec.on{background:#FF1744;animation:pulse 1s ease-in-out infinite}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,23,68,.4)}50%{box-shadow:0 0 0 8px rgba(255,23,68,0)}}
 
-/* Main layout */
 .main{flex:1;display:flex;flex-direction:column;overflow:hidden;background:var(--bg)}
 .tabs{display:flex;background:var(--surface);border-bottom:1px solid var(--border);padding:0 8px}
 .tab{font-family:var(--font-d);font-size:11px;letter-spacing:2px;padding:8px 16px;
@@ -59,7 +55,6 @@ html,body{height:100%;overflow:hidden;background:var(--black);color:var(--fg);
 .pnl-t{font-family:var(--font-d);font-size:10px;letter-spacing:2px;text-transform:uppercase;
   color:var(--purple-glow);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border)}
 
-/* Sliders */
 .sld{display:flex;align-items:center;gap:8px;margin-bottom:6px}
 .sld-l{font-family:var(--font-m);font-size:10px;color:var(--muted);text-transform:uppercase;min-width:70px}
 .sld-i{flex:1;-webkit-appearance:none;height:8px;border-radius:4px;background:var(--grey-medium);outline:none;cursor:pointer}
@@ -69,7 +64,6 @@ html,body{height:100%;overflow:hidden;background:var(--black);color:var(--fg);
   background:var(--accent);border:1px solid var(--orange-glow);box-shadow:var(--glow-o);cursor:pointer;border:none}
 .sld-v{font-family:var(--font-m);font-size:10px;color:var(--orange-light);min-width:40px;text-align:right}
 
-/* Keyboard */
 .kb-wrap{background:var(--surface);border-top:1px solid var(--border);padding:8px 0 4px;min-height:120px}
 .kb{display:flex;justify-content:center;position:relative;height:100px;padding:0 8px;overflow-x:auto}
 .kw{width:28px;height:96px;background:linear-gradient(180deg,#d8d8d8,#fff 10%,#fff 90%,#ccc);
@@ -80,7 +74,6 @@ html,body{height:100%;overflow:hidden;background:var(--black);color:var(--fg);
   border-radius:0 0 3px 3px;cursor:pointer;position:absolute;z-index:2}
 .kbk:active,.kbk.on{background:linear-gradient(180deg,var(--orange-dark),var(--orange-deep))}
 
-/* XY Pad */
 .xy{position:relative;width:100%;aspect-ratio:2/1;max-height:160px;background:var(--grey-darkest);
   border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;cursor:crosshair}
 .xy-g{position:absolute;inset:0;opacity:.3;
@@ -90,7 +83,6 @@ html,body{height:100%;overflow:hidden;background:var(--black);color:var(--fg);
 .xy-lx,.xy-ly{position:absolute;font-size:9px;font-family:var(--font-m);color:var(--muted);text-transform:uppercase}
 .xy-lx{bottom:4px;right:8px}.xy-ly{top:8px;left:4px}
 
-/* Presets */
 .p-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px}
 .p-card{padding:10px 12px;border:1px solid var(--border);border-radius:var(--rl);background:var(--surface);
   cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
@@ -100,18 +92,15 @@ html,body{height:100%;overflow:hidden;background:var(--black);color:var(--fg);
 .p-name{font-family:var(--font-d);font-size:12px;letter-spacing:1px;color:var(--fg)}
 .p-cat{font-size:9px;color:var(--muted);text-transform:uppercase;margin-top:2px}
 
-/* Waveform */
 .wf-box{background:var(--grey-darkest);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;height:80px}
 .wf-c{width:100%;height:100%}
 
-/* Sequencer */
 .seq-g{display:grid;grid-template-columns:60px repeat(16,1fr);gap:3px;align-items:center}
 .seq-l{font-family:var(--font-m);font-size:9px;color:var(--muted);text-transform:uppercase}
 .seq-s{aspect-ratio:1;border-radius:var(--r);background:var(--grey-medium);border:1px solid var(--border);cursor:pointer;min-height:20px}
 .seq-s.on{background:var(--orange-dark);border-color:var(--orange-main);box-shadow:inset 0 0 6px var(--orange-glow)}
 .seq-s.cur{border-color:var(--purple-glow);box-shadow:var(--glow-p)}
 
-/* Splash */
 .splash{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--black);z-index:100;transition:opacity .5s}
 .splash.hide{opacity:0;pointer-events:none}
 .splash-t{font-family:var(--font-d);font-size:42px;letter-spacing:8px;
@@ -120,19 +109,11 @@ html,body{height:100%;overflow:hidden;background:var(--black);color:var(--fg);
 .splash-s{font-size:14px;color:var(--muted);letter-spacing:4px;text-transform:uppercase;margin-top:12px}
 @keyframes sp{0%,100%{opacity:1}50%{opacity:.8}}
 
-/* Utility */
-.fr{display:flex;gap:var(--gap)}.fc{display:flex;flex-direction:column;gap:var(--gap)}
-.f1{flex:1}.gs{gap:6px}
-
-/* Scanline CRT effect */
+.fr{display:flex;gap:var(--gap)}.fc{display:flex;flex-direction:column;gap:var(--gap)}.f1{flex:1}.gs{gap:6px}
 .scan::after{content:'';position:fixed;inset:0;
   background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.03) 2px,rgba(0,0,0,.03) 4px);
   pointer-events:none;z-index:999}
-
-/* Scrollbar */
 ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:0 0}
 ::-webkit-scrollbar-thumb{background:var(--grey-light);border-radius:3px}
-
-/* Mobile */
 @media(max-width:600px){.kw{width:22px;height:80px}.kbk{width:14px;height:48px}
   .logo{font-size:14px;letter-spacing:2px}.kb{height:84px}.kb-wrap{min-height:100px}}

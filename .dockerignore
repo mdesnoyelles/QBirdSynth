@@ -1,0 +1,10 @@
+.git/
+.github/
+node_modules/
+android/
+core/
+*.md
+*.tar.gz
+.dockerignore
+.gitignore
+docker-compose.yml

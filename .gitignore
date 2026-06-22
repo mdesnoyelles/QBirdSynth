@@ -1,26 +1,12 @@
-# Dependencies
 node_modules/
-
-# Build output
 dist/
 build/
-
-# OS files
 .DS_Store
-Thumbs.db
-
-# IDE
 .idea/
 *.iml
-.vscode/
-
-# Android build
 .gradle/
 local.properties
 *.apk
 *.aab
-
-# Temp files
 *.swp
-*.swo
-*~
+.GITIGNORE

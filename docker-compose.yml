@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  qbirdsynth:
+    build: .
+    image: qbirdsynth:latest
+    container_name: qbirdsynth
+    restart: unless-stopped
+    ports:
+      - "8097:8080"
+    environment:
+      - TZ=Europe/Paris
+    volumes:
+      - qbirdsynth-presets:/usr/share/nginx/html/presets
+    labels:
+      # CasaOS labels for app store integration
+      - "casaos.app.name=QBirdSynth"
+      - "casaos.app.description=80s Retro-Futurism Synthesizer - Modern QiBrd Clone"
+      - "casaos.app.icon=https://raw.githubusercontent.com/mdesnoyelles/QBirdSynth/main/docker/icon.png"
+      - "casaos.app.web=http://[HOST]:[PORT:8097]"
+      - "casaos.app.port=8097"
+      - "casaos.app.category=Music"
+      - "casaos.app.developer=mdesnoyelles"
+
+volumes:
+  qbirdsynth-presets:
+    driver: local
