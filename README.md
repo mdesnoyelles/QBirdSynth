@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="web/assets/logo-txt.svg" alt="QBirdSynth" width="400">
+  <img src="web/assets/QBirdSynth_Logo_Txt.svg" alt="QBirdSynth" width="400">
 </div>
 
 <br>
