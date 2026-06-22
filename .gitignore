@@ -1,27 +1,26 @@
 # Dependencies
 node_modules/
-web/node_modules/
 
 # Build output
-web/dist/
-web/.vite/
+dist/
+build/
 
-# Android native libs — rebuild from Csound SDK or copy from APK
-android/app/src/main/jniLibs/
+# OS files
+.DS_Store
+Thumbs.db
 
-# Android build artifacts
-android/.gradle/
-android/build/
-android/app/build/
-android/local.properties
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Android build
+.gradle/
+local.properties
 *.apk
 *.aab
 
-# OS / Editor
-.DS_Store
-Thumbs.db
-.vscode/
-.idea/
+# Temp files
 *.swp
 *.swo
 *~

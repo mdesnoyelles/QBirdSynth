@@ -1,0 +1,9 @@
+{
+  "name": "QBirdSynth",
+  "short_name": "QBirdSynth",
+  "description": "80s Retro-Futurism Synthesizer",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#0A0A0A",
+  "theme_color": "#7B1FA2"
+}
