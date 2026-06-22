@@ -26,7 +26,9 @@ html,body{height:100%;overflow:hidden;background:var(--black);color:var(--fg);
   border-bottom:1px solid var(--border);min-height:40px}
 .logo{font-family:var(--font-d);font-size:18px;letter-spacing:3px;
   background:linear-gradient(90deg,var(--purple-glow),var(--orange-glow));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-transform:uppercase}
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-transform:uppercase}.logo-img{width:36px;height:36px;object-fit:contain;margin-right:8px;filter:drop-shadow(0 0 6px rgba(123,31,162,.6));animation:logoGlow 3s ease-in-out infinite alternate}
+@keyframes logoGlow{0%{filter:drop-shadow(0 0 6px rgba(123,31,162,.4))}100%{filter:drop-shadow(0 0 14px rgba(123,31,162,.8)) drop-shadow(0 0 4px rgba(255,109,0,.4))}}
+.splash-logo{max-width:320px;width:80%;object-fit:contain;margin-bottom:16px;filter:drop-shadow(0 0 30px rgba(123,31,162,.6)) drop-shadow(0 0 10px rgba(255,109,0,.3));animation:sp 2s ease-in-out infinite}
 .hdr-sec{display:flex;gap:6px;align-items:center}
 
 .btn{font-family:var(--font-u);font-size:12px;font-weight:600;padding:6px 14px;

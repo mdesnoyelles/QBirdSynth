@@ -53,10 +53,10 @@ export class App{
 
   _html(){
     this.el.innerHTML='<div class="scan">'+
-      '<div class="splash"><div class="splash-t">QBirdSynth</div><div class="splash-s">Initializing Engine...</div></div>'+
+      '<div class="splash"><img src="assets/logo-txt.svg" alt="QBirdSynth" class="splash-logo"><div class="splash-s">Initializing Engine...</div></div>'+
       '<div class="fc">'+
         '<header class="hdr">'+
-          '<div class="hdr-sec"><span class="logo">QBirdSynth</span></div>'+
+          '<div class="hdr-sec">'+'<img src="assets/logo.svg" alt="QBirdSynth" class="logo-img">'+'<span class="logo">QBirdSynth</span>'+'</div>'+
           '<div class="hdr-sec">'+
             '<button class="btn btn-o" data-act="demo">Demo</button>'+
             '<button class="btn btn-rec" data-act="rec" title="Record"></button>'+
