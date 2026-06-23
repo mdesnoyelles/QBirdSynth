@@ -12,3 +12,5 @@ local.properties
 .GITIGNORE
 keystore/
 *.keystore
+keystore/
+*.keystore
