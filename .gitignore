@@ -16,3 +16,7 @@ keystore/
 *.keystore
 keystore/
 *.keystore
+keystore/
+*.keystore
+cordoba_build/
+capacitor_build/
