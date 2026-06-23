@@ -24,3 +24,5 @@ cordoba_build/
 capacitor_build/
 keystore/
 *.keystore
+keystore/
+*.keystore
