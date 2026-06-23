@@ -10,3 +10,5 @@ local.properties
 *.aab
 *.swp
 .GITIGNORE
+keystore/
+*.keystore
